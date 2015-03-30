@@ -2,8 +2,8 @@
 Contributors: ak.singla
 Tags: automatic, background, updates, admin, plugin, core, theme
 Requires at least: 3.7
-Tested up to: 4.0
-Stable tag: 1.0
+Tested up to: 4.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,8 @@ You will find 'Updates' menu in your WordPress Settings panel.
 
 == Upgrade Notice ==
 
+* Fixed notices faced with WP_debug
+* Like "undefined index" for "minor", "major" and "translation updates
 
 == Screenshots ==
 

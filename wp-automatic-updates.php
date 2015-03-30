@@ -2,17 +2,17 @@
 
 /**
  * @package wp-automatic-updates
- * @version 1.0
+ * @version 1.1
  */
 /**
  * Plugin Name: WP Automatic Updates
  * Plugin URI: http://www.omaksolutions.com
  * Description: Themes, plugins and core updates made easier. 
  * Author: ak.singla
- * Version: 1.0
+ * Version: 1.1
  * Author URI: http://www.omaksolutions.com
  * Requires at least: 3.7
- * Tested up to: 4.0
+ * Tested up to: 4.1
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class WP_Automatic_Updates
 {
 	// Define version
-	const VERSION = '1.0';
+	const VERSION = '1.1';
 
 	var $wpau_options;
 	var $current_user_role;
@@ -76,7 +76,7 @@ class WP_Automatic_Updates
 			$wpau_options = $this->wpau_options;
 	
 			// Update 1.0.4 and +		
-			if( version_compare($wpau_options['version'], '1.1.0', '<') ) {
+			if( version_compare($wpau_options['version'], '1.0', '<') ) {
 				$wpau_options['auto_core_update_send_email'] = 1;
 			}
 
@@ -372,29 +372,45 @@ class WP_Automatic_Updates
 	{
 		$valid = array();
 		
-		if(filter_var($input['notification_updates'], FILTER_VALIDATE_BOOLEAN))
-			$valid['notification_updates'] = $input['notification_updates'];
+		if( isset( $input['notification_updates'] ) ) {
+			if(filter_var($input['notification_updates'], FILTER_VALIDATE_BOOLEAN))
+				$valid['notification_updates'] = $input['notification_updates'];
+		}
 
-		if(filter_var($input['menu_updates'], FILTER_VALIDATE_BOOLEAN))
-			$valid['menu_updates'] = $input['menu_updates'];
+		if( isset( $input['menu_updates'] ) ) {
+			if(filter_var($input['menu_updates'], FILTER_VALIDATE_BOOLEAN))
+				$valid['menu_updates'] = $input['menu_updates'];
+		}
 			
-		if(filter_var($input['minor_updates'], FILTER_VALIDATE_BOOLEAN))
-			$valid['minor_updates'] = $input['minor_updates'];
+		if( isset( $input['minor_updates'] ) ) {
+			if(filter_var($input['minor_updates'], FILTER_VALIDATE_BOOLEAN))
+				$valid['minor_updates'] = $input['minor_updates'];
+		}
 			
-		if(filter_var($input['major_updates'], FILTER_VALIDATE_BOOLEAN))
-			$valid['major_updates'] = $input['major_updates'];
+		if( isset( $input['major_updates'] ) ) {
+			if(filter_var($input['major_updates'], FILTER_VALIDATE_BOOLEAN))
+				$valid['major_updates'] = $input['major_updates'];
+		}
 			
-		if(filter_var($input['plugin_updates'], FILTER_VALIDATE_BOOLEAN))
-			$valid['plugin_updates'] = $input['plugin_updates'];
+		if( isset( $input['plugin_updates'] ) ) {
+			if(filter_var($input['plugin_updates'], FILTER_VALIDATE_BOOLEAN))
+				$valid['plugin_updates'] = $input['plugin_updates'];
+		}
 			
-		if(filter_var($input['theme_updates'], FILTER_VALIDATE_BOOLEAN))
-			$valid['theme_updates'] = $input['theme_updates'];
+		if( isset( $input['theme_updates'] ) ) {
+			if(filter_var($input['theme_updates'], FILTER_VALIDATE_BOOLEAN))
+				$valid['theme_updates'] = $input['theme_updates'];
+		}
 			
-		if(filter_var($input['translation_updates'], FILTER_VALIDATE_BOOLEAN))
-			$valid['translation_updates'] = $input['translation_updates'];
+		if( isset( $input['translation_updates'] ) ) {
+			if(filter_var($input['translation_updates'], FILTER_VALIDATE_BOOLEAN))
+				$valid['translation_updates'] = $input['translation_updates'];
+		}
 
-		if(filter_var($input['auto_core_update_send_email'], FILTER_VALIDATE_BOOLEAN))
-			$valid['auto_core_update_send_email'] = $input['auto_core_update_send_email'];
+		if( isset( $input['auto_core_updates_send_email'] ) ) {
+			if(filter_var($input['auto_core_update_send_email'], FILTER_VALIDATE_BOOLEAN))
+				$valid['auto_core_update_send_email'] = $input['auto_core_update_send_email'];
+		}
 			
 		$valid['version'] = self::VERSION;
 	
