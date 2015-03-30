@@ -2,14 +2,14 @@
 
 /**
  * @package wp-automatic-updates
- * @version 1.1
+ * @version 1.1.1
  */
 /**
  * Plugin Name: WP Automatic Updates
  * Plugin URI: http://www.omaksolutions.com
  * Description: Themes, plugins and core updates made easier. 
  * Author: ak.singla
- * Version: 1.1
+ * Version: 1.1.1
  * Author URI: http://www.omaksolutions.com
  * Requires at least: 3.7
  * Tested up to: 4.1
@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class WP_Automatic_Updates
 {
 	// Define version
-	const VERSION = '1.1';
+	const VERSION = '1.1.1';
 
 	var $wpau_options;
 	var $current_user_role;
@@ -52,8 +52,14 @@ class WP_Automatic_Updates
 			$wpau_options = array(
 				'notification_updates' => 1,
 				'menu_updates' => 1,
+				
 				'minor_updates' => 1,
-				'translation_updates' => 1,
+				'major_updates' => 0,
+				
+				'plugin_updates' => 1,
+				'theme_updates' => 0,
+				
+				'translation_updates' => 0,
 				'auto_core_update_send_email' => 1,
 				'version' => self::VERSION
 			);
@@ -188,7 +194,7 @@ class WP_Automatic_Updates
 		?>
 		<div class="wrap">
 		<?php screen_icon(); ?>
-		<h2><?php _e('Updates Settings', 'wpau-plugin'); ?></h2>
+		<h2><?php _e('WP Automatic Updates Settings', 'wpau-plugin'); ?></h2>
 		<form action="options.php" method="post">
 		<?php settings_fields('omak_wpau_options'); ?>
 		<?php do_settings_sections('wpau'); ?>
@@ -228,7 +234,7 @@ class WP_Automatic_Updates
 			'id'	=> 'wpau_help_plugin_theme_tab',
 			'title'	=> __('Plugin & Theme updates', 'wpau-plugin'),
 			'content'	=> '<p>'. __('WordPress 3.7 (and more) use Automatic Background Updates (see <a href="http://codex.wordpress.org/Configuring_Automatic_Background_Updates" target="_blank">Configuring Automatic Background Updates</a>)', 'wpau-plugin')
-				. '<ul><li>' . __('<strong>Plugin updates</strong> are disabled by default. Check this option to enable WordPress Plugin updates. Uncheck this option to restore default behavior.', 'wpau-plugin') . '</li>'
+				. '<ul><li>' . __('<strong>Plugin updates</strong> are enabled by default. Check this option to disable WordPress Plugin updates. Uncheck this option to restore default behavior.', 'wpau-plugin') . '</li>'
 				. '<li>' . __('<strong>Theme updates</strong> are disabled by default. Check this option to enable WordPress Theme updates. Uncheck this option to restore default behavior.', 'wpau-plugin') . '</li></ul>'
 				. '</p>',
 		));
@@ -299,7 +305,7 @@ class WP_Automatic_Updates
 	
 	function wpau_plugin_theme_section_text()
 	{
-		_e('Automatic plugin and theme updates are disabled by default.', 'wpau-plugin');
+		_e('Automatic plugin are enabled and theme updates are disabled by default.', 'wpau-plugin');
 	}
 	
 	function wpau_translation_section_text()
@@ -407,7 +413,7 @@ class WP_Automatic_Updates
 				$valid['translation_updates'] = $input['translation_updates'];
 		}
 
-		if( isset( $input['auto_core_updates_send_email'] ) ) {
+		if( isset( $input['auto_core_update_send_email'] ) ) {
 			if(filter_var($input['auto_core_update_send_email'], FILTER_VALIDATE_BOOLEAN))
 				$valid['auto_core_update_send_email'] = $input['auto_core_update_send_email'];
 		}

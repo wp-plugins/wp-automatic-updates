@@ -3,7 +3,7 @@ Contributors: ak.singla
 Tags: automatic, background, updates, admin, plugin, core, theme
 Requires at least: 3.7
 Tested up to: 4.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,12 @@ You will find 'Updates' menu in your WordPress Settings panel.
 * WP Automatic Updates could be activated on WordPress 3.7.x and more. If you are using an older version, WP Automatic Updates can't be activated.
 
 == Changelog ==
+
+= 1.1.1 =
+* Default values changed to have plugins updated automatically
+
+= 1.1 =
+* Fixed notices faced with debug mode enabled
 
 = 1.0.0 =
 * Initial version
