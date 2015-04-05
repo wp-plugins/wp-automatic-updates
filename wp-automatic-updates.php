@@ -7,7 +7,7 @@
 /**
  * Plugin Name: WP Automatic Updates
  * Plugin URI: http://www.omaksolutions.com
- * Description: Themes, plugins and core updates made easier. 
+ * Description: Themes, plugins and core updates made easier. If you would like to extend or modify this plugin for your custom WP setup, just contact the author. He will be more than happy to hear from you. <br/>E-mail at: <a href="mailto:ak.singla@hotmail.com">ak.singla@hotmail.com</a> | Skype: <a href="skype:ak.singla47?call">ak.singla47</a>
  * Author: ak.singla
  * Version: 1.1.1
  * Author URI: http://www.omaksolutions.com
