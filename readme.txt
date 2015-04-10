@@ -3,7 +3,7 @@ Contributors: ak.singla
 Tags: automatic, background, updates, admin, plugin, core, theme
 Requires at least: 3.7
 Tested up to: 4.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,10 +50,7 @@ You will find 'Updates' menu in your WordPress Settings panel.
 
 == Screenshots ==
 
-1. Activate the plugin
-2. Like to Settings Updates panel
-3. Updates link added to Settings panel
-4. Updates Settings page and Help
+1. Plugin Settings that you can change, rest there is not front-end task of this plugin
 
 == Frequently Asked Questions ==
 
@@ -62,6 +59,9 @@ You will find 'Updates' menu in your WordPress Settings panel.
 * WP Automatic Updates could be activated on WordPress 3.7.x and more. If you are using an older version, WP Automatic Updates can't be activated.
 
 == Changelog ==
+
+= 1.1.2 =
+* Improved admin options page to look more appealing
 
 = 1.1.1 =
 * Default values changed to have plugins updated automatically

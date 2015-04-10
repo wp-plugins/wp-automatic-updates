@@ -2,14 +2,14 @@
 
 /**
  * @package wp-automatic-updates
- * @version 1.1.1
+ * @version 1.1.2
  */
 /**
  * Plugin Name: WP Automatic Updates
  * Plugin URI: http://www.omaksolutions.com
  * Description: Themes, plugins and core updates made easier. If you would like to extend or modify this plugin for your custom WP setup, just contact the author. He will be more than happy to hear from you. <br/>E-mail at: <a href="mailto:ak.singla@hotmail.com">ak.singla@hotmail.com</a> | Skype: <a href="skype:ak.singla47?call">ak.singla47</a>
  * Author: ak.singla
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author URI: http://www.omaksolutions.com
  * Requires at least: 3.7
  * Tested up to: 4.1
@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class WP_Automatic_Updates
 {
 	// Define version
-	const VERSION = '1.1.1';
+	const VERSION = '1.1.2';
 
 	var $wpau_options;
 	var $current_user_role;
@@ -186,6 +186,11 @@ class WP_Automatic_Updates
 	{
 		$this->wpau_admin_page = add_options_page(__('WP Updates', 'wpau-plugin'), __('WP Updates', 'wpau-plugin'), 'manage_options', __FILE__, array(&$this, 'wp_updates_manager_menu_page'));
 		add_action('load-'.$this->wpau_admin_page, array(&$this, 'wpau_admin_add_help_tab'));
+		add_action( 'admin_print_styles-' .$this->wpau_admin_page, array(&$this, 'wpau_admin_print_styles'));
+	}
+	
+	function wpau_admin_print_styles() {
+		wp_enqueue_style('admin-css', plugins_url( 'css/admin-css.css', __FILE__ ), array(), self::VERSION);
 	}
 	
 	function wp_updates_manager_menu_page()
@@ -295,27 +300,37 @@ class WP_Automatic_Updates
 	
 	function wpau_notification_section_text()
 	{
-		_e('By default, notification updates are displayed in Dashboard, Appearance menu and Plugins menu.', 'wpau-plugin');
+		echo '<p class="section-text">';
+			_e('By default, notification updates are displayed in Dashboard, Appearance menu and Plugins menu.', 'wpau-plugin');
+		echo '</p>';
 	}
 	
 	function wpau_core_section_text()
 	{
-		_e('By default, automatic updates are only enabled for minor core releases.', 'wpau-plugin');
+		echo '<p class="section-text">';
+			_e('By default, automatic updates are only enabled for minor core releases.', 'wpau-plugin');
+		echo '</p>';
 	}
 	
 	function wpau_plugin_theme_section_text()
 	{
-		_e('Automatic plugin are enabled and theme updates are disabled by default.', 'wpau-plugin');
+		echo '<p class="section-text">';
+			_e('Automatic plugin are enabled and theme updates are disabled by default.', 'wpau-plugin');
+		echo '</p>';
 	}
 	
 	function wpau_translation_section_text()
 	{
-		_e('Automatic translation file updates are already enabled by default.', 'wpau-plugin');
+		echo '<p class="section-text">';
+			_e('Automatic translation file updates are already enabled by default.', 'wpau-plugin');
+		echo '</p>';
 	}
 	
 	function wpau_core_update_email_section_text()
 	{
-		_e('Automatic emails are sent on updates. This features is enabled by default.', 'wpau-plugin');
+		echo '<p class="section-text">';
+			_e('Automatic emails are sent on updates. This features is enabled by default.', 'wpau-plugin');
+		echo '</p>';
 	}
 	
 	function wpau_notification_updates_input()
