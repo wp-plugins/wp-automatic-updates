@@ -50,7 +50,7 @@ You will find 'Updates' menu in your WordPress Settings panel.
 
 == Screenshots ==
 
-1. Plugin Settings that you can change, rest there is not front-end task of this plugin
+1. Plugin Settings that you can change
 
 == Frequently Asked Questions ==
 
