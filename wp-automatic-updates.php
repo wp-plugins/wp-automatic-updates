@@ -200,6 +200,9 @@ class WP_Automatic_Updates
 		<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php _e('WP Automatic Updates Settings', 'wpau-plugin'); ?></h2>
+		<br/>
+		<p>We recommend you check on the Plugin updates. It just makes your life so easeir!</p>
+		<br/><br/>
 		<form action="options.php" method="post">
 		<?php settings_fields('omak_wpau_options'); ?>
 		<?php do_settings_sections('wpau'); ?>
