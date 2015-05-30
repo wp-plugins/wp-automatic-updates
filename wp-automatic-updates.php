@@ -2,14 +2,14 @@
 
 /**
  * @package wp-automatic-updates
- * @version 1.1.2
+ * @version 1.1.3
  */
 /**
  * Plugin Name: WP Automatic Updates
  * Plugin URI: http://www.omaksolutions.com
  * Description: Themes, plugins and core updates made easier. If you would like to extend or modify this plugin for your custom WP setup, just contact the author. He will be more than happy to hear from you. <br/>E-mail at: <a href="mailto:ak.singla@hotmail.com">ak.singla@hotmail.com</a> | Skype: <a href="skype:ak.singla47?call">ak.singla47</a>
  * Author: ak.singla
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author URI: http://www.omaksolutions.com
  * Requires at least: 3.7
  * Tested up to: 4.1
@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class WP_Automatic_Updates
 {
 	// Define version
-	const VERSION = '1.1.2';
+	const VERSION = '1.1.3';
 
 	var $wpau_options;
 	var $current_user_role;
@@ -59,7 +59,7 @@ class WP_Automatic_Updates
 				'plugin_updates' => 1,
 				'theme_updates' => 0,
 				
-				'translation_updates' => 0,
+				'translation_updates' => 1,
 				'auto_core_update_send_email' => 1,
 				'version' => self::VERSION
 			);
@@ -199,9 +199,9 @@ class WP_Automatic_Updates
 		?>
 		<div class="wrap">
 		<?php screen_icon(); ?>
-		<h2><?php _e('WP Automatic Updates Settings', 'wpau-plugin'); ?></h2>
+		<h2 style="text-align:center;"><?php _e('WP Automatic Updates Settings', 'wpau-plugin'); ?></h2>
 		<br/>
-		<p>We recommend you check on the Plugin updates. It just makes your life so easeir!</p>
+		<p style="text-align:center;">Thanks for using the automatic updates plugin. This will make your life easier by automatically installing WordPress core, theme, plugin and translation updates.</p>
 		<br/><br/>
 		<form action="options.php" method="post">
 		<?php settings_fields('omak_wpau_options'); ?>
@@ -282,23 +282,23 @@ class WP_Automatic_Updates
 	{
 		register_setting('omak_wpau_options', 'omak_wpau_options', array(&$this, 'wpau_validate_options'));
 	
-		add_settings_section('wpau_notification', __('WordPress notification & menu updates', 'wpau-plugin'),	array(&$this, 'wpau_notification_section_text'), 'wpau');
-		add_settings_field('wpau_notification_updates', __('Updates notification', 'wpau-plugin'),				array(&$this, 'wpau_notification_updates_input'), 'wpau', 'wpau_notification');
-		add_settings_field('wpau_menu_updates', __('Administrator menu updates (not available for <a href="http://codex.wordpress.org/Glossary#Multisite" target="_blank">Multisite</a>)', 'wpau-plugin'),				array(&$this, 'wpau_menu_updates_input'), 'wpau', 'wpau_notification');
+		add_settings_section('wpau_notification', __('Notification & Menu Updates', 'wpau-plugin'),	array(&$this, 'wpau_notification_section_text'), 'wpau');
+		add_settings_field('wpau_notification_updates', __('Enable update notifications', 'wpau-plugin'),				array(&$this, 'wpau_notification_updates_input'), 'wpau', 'wpau_notification');
+		add_settings_field('wpau_menu_updates', __('Enable Admin menu updates<br/>(not available for <a href="http://codex.wordpress.org/Glossary#Multisite" target="_blank">Multisite</a>)', 'wpau-plugin'),				array(&$this, 'wpau_menu_updates_input'), 'wpau', 'wpau_notification');
 	
-		add_settings_section('wpau_core', __('WordPress core updates', 'wpau-plugin'),							array(&$this, 'wpau_core_section_text'), 'wpau');
-		add_settings_field('wpau_minor_updates', __('Minor core updates', 'wpau-plugin'),						array(&$this, 'wpau_minor_updates_input'), 'wpau', 'wpau_core');
-		add_settings_field('wpau_major_updates', __('Major core updates', 'wpau-plugin'),						array(&$this, 'wpau_major_updates_input'), 'wpau', 'wpau_core');
+		add_settings_section('wpau_core', __('WP Core Updates', 'wpau-plugin'),							array(&$this, 'wpau_core_section_text'), 'wpau');
+		add_settings_field('wpau_minor_updates', __('Enable Minor core updates', 'wpau-plugin'),						array(&$this, 'wpau_minor_updates_input'), 'wpau', 'wpau_core');
+		add_settings_field('wpau_major_updates', __('Enable Major core updates', 'wpau-plugin'),						array(&$this, 'wpau_major_updates_input'), 'wpau', 'wpau_core');
 		
-		add_settings_section('wpau_plugin_theme', __('Plugin & Theme updates', 'wpau-plugin'),					array(&$this, 'wpau_plugin_theme_section_text'), 'wpau');
-		add_settings_field('wpau_plugin_updates', __('Plugin updates', 'wpau-plugin'),							array(&$this, 'wpau_plugin_updates_input'), 'wpau', 'wpau_plugin_theme');
-		add_settings_field('wpau_theme_updates', __('Theme updates', 'wpau-plugin'),								array(&$this, 'wpau_theme_updates_input'), 'wpau', 'wpau_plugin_theme');
+		add_settings_section('wpau_plugin_theme', __('Plugin & Theme Updates', 'wpau-plugin'),					array(&$this, 'wpau_plugin_theme_section_text'), 'wpau');
+		add_settings_field('wpau_plugin_updates', __('Enable Plugin updates', 'wpau-plugin'),							array(&$this, 'wpau_plugin_updates_input'), 'wpau', 'wpau_plugin_theme');
+		add_settings_field('wpau_theme_updates', __('Enable Theme updates', 'wpau-plugin'),								array(&$this, 'wpau_theme_updates_input'), 'wpau', 'wpau_plugin_theme');
 	
-		add_settings_section('wpau_translation', __('Translation updates', 'wpau-plugin'),						array(&$this, 'wpau_translation_section_text'), 'wpau');
-		add_settings_field('wpau_translation_updates', __('Translation updates', 'wpau-plugin'),				array(&$this, 'wpau_translation_updates_input'), 'wpau', 'wpau_translation');
+		add_settings_section('wpau_translation', __('Translation Updates', 'wpau-plugin'),						array(&$this, 'wpau_translation_section_text'), 'wpau');
+		add_settings_field('wpau_translation_updates', __('Enable Translation updates', 'wpau-plugin'),				array(&$this, 'wpau_translation_updates_input'), 'wpau', 'wpau_translation');
 		
 		add_settings_section('wpau_auto_core_email', __('Email updates', 'wpau-plugin'),						array(&$this, 'wpau_core_update_email_section_text'), 'wpau');
-		add_settings_field('wpau_auto_update_email_updates', __('Email updates', 'wpau-plugin'),				array(&$this, 'wpau_core_update_email_input'), 'wpau', 'wpau_auto_core_email');
+		add_settings_field('wpau_auto_update_email_updates', __('Send Email notifications', 'wpau-plugin'),				array(&$this, 'wpau_core_update_email_input'), 'wpau', 'wpau_auto_core_email');
 	}
 	
 	function wpau_notification_section_text()
@@ -318,21 +318,21 @@ class WP_Automatic_Updates
 	function wpau_plugin_theme_section_text()
 	{
 		echo '<p class="section-text">';
-			_e('Automatic plugin are enabled and theme updates are disabled by default.', 'wpau-plugin');
+			_e('Automatic Plugin updates are enabled and Theme updates are disabled by default.', 'wpau-plugin');
 		echo '</p>';
 	}
 	
 	function wpau_translation_section_text()
 	{
 		echo '<p class="section-text">';
-			_e('Automatic translation file updates are already enabled by default.', 'wpau-plugin');
+			_e('Check to allow automatic updates for translation files. Enabled by default.', 'wpau-plugin');
 		echo '</p>';
 	}
 	
 	function wpau_core_update_email_section_text()
 	{
 		echo '<p class="section-text">';
-			_e('Automatic emails are sent on updates. This features is enabled by default.', 'wpau-plugin');
+			_e('Automatic emails are sent only on majore core updates. Enabled by default.', 'wpau-plugin');
 		echo '</p>';
 	}
 	

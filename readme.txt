@@ -2,8 +2,8 @@
 Contributors: ak.singla
 Tags: automatic, background, updates, admin, plugin, core, theme
 Requires at least: 3.7
-Tested up to: 4.2.1
-Stable tag: 1.1.2
+Tested up to: 4.2.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,8 +45,9 @@ You will find 'Updates' menu in your WordPress Settings panel.
 
 == Upgrade Notice ==
 
+* Fixed: Grammatical corrections
 * Fixed notices faced with WP_debug
-* Like "undefined index" for "minor", "major" and "translation updates
+* Like "undefined index" for "minor", "major" and "translation updates"
 
 == Screenshots ==
 
@@ -59,6 +60,9 @@ You will find 'Updates' menu in your WordPress Settings panel.
 * WP Automatic Updates could be activated on WordPress 3.7.x and more. If you are using an older version, WP Automatic Updates can't be activated.
 
 == Changelog ==
+
+= 1.1.3 =
+* Fixed: Grammatical corrections in the admin section of the plugin.
 
 = 1.1.2 =
 * Improved admin options page to look more appealing
