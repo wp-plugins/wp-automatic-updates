@@ -11,7 +11,7 @@ Configure WordPress updates settings through UI (User Interface).
 
 == Description ==
 
-An easy-to-use plugin settings panel where you can set automatic updates options for themes, plugins, and core udpates. 
+An easy-to-use plugin settings panel where you can set automatic updates options for themes, plugins, and core updates. 
 
 = Features =
 
